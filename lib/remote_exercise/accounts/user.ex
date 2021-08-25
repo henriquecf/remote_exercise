@@ -9,9 +9,10 @@ defmodule RemoteExercise.Accounts.User do
   end
 
   @doc false
-  def changeset(users, attrs) do
-    users
+  def changeset(user, attrs) do
+    user
     |> cast(attrs, [:points])
     |> validate_required([:points])
+    |> check_constraint(:points, name: :poits_must_be_zero_to_hundred, message: "must be between 0 and 100")
   end
 end
