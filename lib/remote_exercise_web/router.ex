@@ -5,8 +5,10 @@ defmodule RemoteExerciseWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", RemoteExerciseWeb do
+  scope "/", RemoteExerciseWeb do
     pipe_through :api
+
+    get "/", UserController, :index
   end
 
   # Enables LiveDashboard only for development
